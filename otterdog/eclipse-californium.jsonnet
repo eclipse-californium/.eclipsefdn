@@ -7,6 +7,8 @@ local tagsProtectionRuleset() = orgs.newRepoRuleset('tags-protection') {
   ],
   allows_deletions: false,	
   allows_updates: false,
+  required_pull_request: null,
+  requires_status_checks: false,
 };
 
 orgs.newOrg('eclipse-californium') {
