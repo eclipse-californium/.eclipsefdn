@@ -1,5 +1,14 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
+local tagsProtectionRuleset() = orgs.newRepoRuleset('tags-protection') {
+  target: "tag",
+  include_refs: [
+    '~ALL'
+  ],
+  allows_deletions: false,	
+  allows_updates: false,
+};
+
 orgs.newOrg('eclipse-californium') {
   settings+: {
     description: "",
@@ -34,6 +43,9 @@ orgs.newOrg('eclipse-californium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      rulesets: [
+        tagsProtectionRuleset(),
+      ],
     },
     orgs.newRepo('californium-website') {
       allow_merge_commit: true,
@@ -58,6 +70,9 @@ orgs.newOrg('eclipse-californium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      rulesets: [
+        tagsProtectionRuleset(),
+      ],
     },
     orgs.newRepo('californium.tools') {
       allow_merge_commit: true,
@@ -73,6 +88,9 @@ orgs.newOrg('eclipse-californium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      rulesets: [
+        tagsProtectionRuleset(),
+      ],
     },
   ],
 }
