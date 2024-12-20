@@ -1,6 +1,6 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
-orgs.newOrg('eclipse-californium') {
+orgs.newOrg('iot.californium', 'eclipse-californium') {
   settings+: {
     description: "",
     name: "Eclipse Californium™",
