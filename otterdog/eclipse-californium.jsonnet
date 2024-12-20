@@ -12,7 +12,7 @@ local tagsProtectionRuleset() = orgs.newRepoRuleset('tags-protection') {
   required_status_checks: null,
 };
 
-orgs.newOrg('eclipse-californium') {
+orgs.newOrg('iot.californium', 'eclipse-californium') {
   settings+: {
     description: "",
     name: "Eclipse Californium™",
@@ -95,5 +95,10 @@ orgs.newOrg('eclipse-californium') {
         tagsProtectionRuleset(),
       ],
     },
+  ],
+} + {
+  # snippet added due to 'https://github.com/EclipseFdn/otterdog-configs/blob/main/blueprints/add-dot-github-repo.yml'
+  _repositories+:: [
+    orgs.newRepo('.github')
   ],
 }
