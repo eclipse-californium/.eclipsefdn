@@ -1,5 +1,17 @@
 local orgs = import 'vendor/otterdog-defaults/otterdog-defaults.libsonnet';
 
+local tagsProtectionRuleset() = orgs.newRepoRuleset('tags-protection') {
+  target: "tag",
+  include_refs: [
+    '~ALL'
+  ],
+  allows_creations: true,
+  allows_deletions: false,	
+  allows_updates: false,
+  required_pull_request: null,
+  required_status_checks: null,
+};
+
 orgs.newOrg('iot.californium', 'eclipse-californium') {
   settings+: {
     description: "",
@@ -31,6 +43,9 @@ orgs.newOrg('iot.californium', 'eclipse-californium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      rulesets: [
+        tagsProtectionRuleset(),
+      ],
     },
     orgs.newRepo('californium-website') {
       allow_merge_commit: true,
@@ -55,6 +70,9 @@ orgs.newOrg('iot.californium', 'eclipse-californium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      rulesets: [
+        tagsProtectionRuleset(),
+      ],
     },
     orgs.newRepo('californium.tools') {
       allow_merge_commit: true,
@@ -70,6 +88,9 @@ orgs.newOrg('iot.californium', 'eclipse-californium') {
       workflows+: {
         default_workflow_permissions: "write",
       },
+      rulesets: [
+        tagsProtectionRuleset(),
+      ],
     },
   ],
 } + {
