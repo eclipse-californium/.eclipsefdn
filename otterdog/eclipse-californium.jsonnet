@@ -4,9 +4,6 @@ orgs.newOrg('iot.californium', 'eclipse-californium') {
   settings+: {
     description: "",
     name: "Eclipse Californium™",
-    security_managers+: [
-      "iot-californium-committers"
-    ],
     web_commit_signoff_required: false,
     workflows+: {
       actions_can_approve_pull_request_reviews: false,
